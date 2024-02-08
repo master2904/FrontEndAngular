@@ -7,5 +7,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'cliente';
 }
