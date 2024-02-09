@@ -14,7 +14,11 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ClienteComponent } from './cliente/cliente.component';
 import {MatIconModule} from '@angular/material/icon';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { UsuarioFormComponent } from './usuario/usuario-form/usuario-form.component';
+import { MatButtonModule } from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,14 +26,20 @@ import {MatIconModule} from '@angular/material/icon';
     Prueba2Component,
     Prueba3Component,
     UsuarioComponent,
-    ClienteComponent
+    ClienteComponent,
+    UsuarioFormComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatDialogModule,
     MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
     ToastrModule.forRoot(), // ToastrModule added
 
   ],
