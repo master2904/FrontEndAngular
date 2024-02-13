@@ -5,6 +5,7 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import Swal from 'sweetalert2';
 import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-usuario',
@@ -15,7 +16,7 @@ export class UsuarioComponent implements OnInit{
   usuarios:Usuario[]=[]
   datos:number[]=[]
   cadena:string[]=[]
-  constructor(private usuarioService:UsuarioService,public dialog: MatDialog){}
+  constructor(private usuarioService:UsuarioService,public dialog: MatDialog,private toatr:ToastrService){}
   llenar_imagen(nombre:string):string{
     return 'http://localhost:8000/api/usuario/imagen/'+nombre
   }
@@ -95,7 +96,49 @@ export class UsuarioComponent implements OnInit{
     const dialogRef = this.dialog.open(UsuarioFormComponent,{data:user});
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      console.log(result.value);
+      user={
+        id:0,
+        nombre:result.value.nombre,
+        apellido:result.value.apellido,
+        username:result.value.username,
+        password:result.value.password,
+        imagen:result.value.imagen,
+        email:result.value.email
+      }
+      this.usuarioService.agregar(user).subscribe(data=>{
+        this.usuarios=data
+        this.toatr.success('Exito','Registro Guardado')
+      },
+      error=>{
+        this.toatr.error('Error','Operacion Fallida')
+
+      })
+    });
+  }
+
+  actualizar(item:Usuario) {
+    let user:Usuario
+    const dialogRef = this.dialog.open(UsuarioFormComponent,{data:item});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result.value);
+      user={
+        id:item.id,
+        nombre:result.value.nombre,
+        apellido:result.value.apellido,
+        username:result.value.username,
+        password:result.value.password,
+        imagen:result.value.imagen,
+        email:result.value.email
+      }
+      this.usuarioService.actualizar(user,item.id).subscribe(data=>{
+        this.usuarios=data
+        this.toatr.success('Exito','Registro Actualizado')
+      },
+      error=>{
+        this.toatr.error('Error','Operacion Fallida')
+
+      })
     });
   }
 }
