@@ -12,15 +12,28 @@ import { Usuario } from 'src/app/models/usuario';
 export class UsuarioFormComponent{
   constructor(public dialogRef:MatDialogRef<UsuarioFormComponent>, @ Inject (MAT_DIALOG_DATA) public data:Usuario){
     console.log(data)
+    this.nombre?.setValue(data.nombre)
+    this.apellido?.setValue(data.apellido)
+    this.username?.setValue(data.username)
+    this.password?.setValue(data.password)
+    this.imagen?.setValue(data.imagen)
+    this.email?.setValue(data.email)
   }
   agregar=new FormGroup({
     id: new FormControl('',[]),
     nombre: new FormControl('',[Validators.required]),
-    email: new FormControl('',[Validators.required,Validators.email])
+    email: new FormControl('',[Validators.required,Validators.email]),
+    apellido: new FormControl('',[Validators.required]),
+    username: new FormControl('',[Validators.required]),
+    password: new FormControl('',[Validators.required]),
+    imagen: new FormControl('',[Validators.required])
+
   })
-  get nombre(){
-    return this.agregar.get('nombre')
-  }
+  get nombre(){return this.agregar.get('nombre')}
+  get apellido(){return this.agregar.get('apellido')}
+  get imagen(){return this.agregar.get('imagen')}
+  get password(){return this.agregar.get('password')}
+  get username(){return this.agregar.get('username')}
   get email(){
     return this.agregar.get('email')
   }

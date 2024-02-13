@@ -82,7 +82,17 @@ export class UsuarioComponent implements OnInit{
     });
   }
   openDialog() {
-    const dialogRef = this.dialog.open(UsuarioFormComponent,{data:this.usuarios[0]});
+    let user:Usuario
+    user={
+      id:0,
+      nombre:'',
+      apellido:'',
+      username:'',
+      password:'',
+      imagen:'',
+      email:''
+    }
+    const dialogRef = this.dialog.open(UsuarioFormComponent,{data:user});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

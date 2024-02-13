@@ -10,30 +10,30 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Apellido</mat-label>
-    <input matInput placeholder="Placeholder">
+    <input matInput placeholder="Placeholder" formControlName="apellido">
     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
+    <mat-error>error</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Cuenta</mat-label>
-    <input matInput placeholder="Placeholder">
+    <input matInput placeholder="Placeholder" formControlName="username">
     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
+    <mat-error>error</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Clave</mat-label>
-    <input matInput placeholder="Placeholder" type="password">
+    <input matInput placeholder="Placeholder" type="password" formControlName="password">
     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
+    <mat-error>error</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Imagen</mat-label>
-    <input matInput placeholder="Placeholder">
+    <input matInput placeholder="Placeholder" formControlName="imagen">
     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
+    <mat-error>error</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
@@ -46,5 +46,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-dialog-close class="btn btn-secondary">Cancelar</button>
-  <button [mat-dialog-close]="agregar" cdkFocusInitial class="btn btn-primary" [disabled]="agregar.invalid">Guardar</button>
+  <button [mat-dialog-close]="agregar" class="btn btn-primary" [disabled]="agregar.invalid">Guardar</button>
 </mat-dialog-actions>
