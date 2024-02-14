@@ -9,6 +9,7 @@
       <th>#</th>
       <th>Nombre Completo</th>
       <th>Cuenta</th>
+      <th>Correo</th>
       <th>Imagen</th>
       <th>Opcion</th>
     </tr>
@@ -18,6 +19,7 @@
       <td>{{i+1}}</td>
       <td>{{item.nombre}} {{item.apellido}}</td>
       <td>{{item.username}}</td>
+      <td>{{item.email}}</td>
       <td>
         <img appImagenRota src="{{llenar_imagen(item.imagen)}}" height="50px" width="50px">
       </td>
