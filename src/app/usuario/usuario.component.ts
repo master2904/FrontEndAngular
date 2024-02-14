@@ -90,24 +90,28 @@ export class UsuarioComponent implements OnInit{
     const dialogRef = this.dialog.open(UsuarioFormComponent,{data:{usuario:user,texto:"Crear Usuario"}});
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result.value);
-      user={
-        id:0,
-        nombre:result.value.nombre,
-        apellido:result.value.apellido,
-        username:result.value.username,
-        password:result.value.password,
-        imagen:result.value.imagen,
-        email:result.value.email
-      }
-      this.usuarioService.agregar(user).subscribe(data=>{
-        this.usuarios=data
-        this.toatr.success('Exito','Registro Guardado')
-      },
-      error=>{
-        this.toatr.error('Error','Operacion Fallida')
+      console.log(result);
+      if(result.value!=undefined){
+        user={
+          id:0,
+          nombre:result.value.nombre,
+          apellido:result.value.apellido,
+          username:result.value.username,
+          password:result.value.password,
+          imagen:result.value.nombreImagen,
+          email:result.value.email
+        }
+        this.usuarioService.agregar(user).subscribe(data=>{
+          this.usuarios=data
+          this.toatr.success('Exito','Registro Guardado')
+        },
+        error=>{
+          this.toatr.error('Error','Operacion Fallida')
 
-      })
+        })
+      }
+      else
+        this.toatr.info('Nota','Operacion Cancelada')
     });
   }
 
@@ -122,7 +126,7 @@ export class UsuarioComponent implements OnInit{
         apellido:result.value.apellido,
         username:result.value.username,
         password:result.value.password,
-        imagen:result.value.imagen,
+        imagen:result.value.nombreImagen,
         email:result.value.email
       }
       this.usuarioService.actualizar(user,item.id).subscribe(data=>{

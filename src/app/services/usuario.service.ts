@@ -27,4 +27,10 @@ export class UsuarioService {
   actualizar(formulario:Usuario,id:number):Observable<Usuario[]>{
     return this.http.put<Usuario[]>('http://localhost:8000/api/usuario/'+id,formulario)
   }
+  subirImagen(file:File,nombre:string):Observable<any>{
+    const fd = new FormData
+    fd.append('image',file,nombre)
+    return this.http.post('http://localhost:8000/api/usuario/imagen',fd)
+  }
+
 }
