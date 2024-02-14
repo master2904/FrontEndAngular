@@ -20,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ImagenRotaDirective } from './imagen-rota.directive';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
     UsuarioComponent,
     ClienteComponent,
     UsuarioFormComponent,
+    ImagenRotaDirective,
 
   ],
   imports: [

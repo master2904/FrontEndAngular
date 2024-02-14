@@ -14,19 +14,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UsuarioComponent implements OnInit{
   usuarios:Usuario[]=[]
-  datos:number[]=[]
-  cadena:string[]=[]
   constructor(private usuarioService:UsuarioService,public dialog: MatDialog,private toatr:ToastrService){}
   llenar_imagen(nombre:string):string{
     return 'http://localhost:8000/api/usuario/imagen/'+nombre
   }
   ngOnInit(): void {
-    this.datos=this.usuarioService.listar()
-    this.cadena=this.usuarioService.listar_cadenas()
-    console.log(this.datos,this.cadena)
     this.usuarioService.listar_usuarios().subscribe(data=>{
       this.usuarios=data
-      console.log(data)
     })
   }
   eliminar(item:Usuario):void{
