@@ -21,6 +21,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ImagenRotaDirective } from './imagen-rota.directive';
+import { CategoriaComponent } from './categoria/categoria.component';
+import { ProductoComponent } from './producto/producto.component';
+import { VentaComponent } from './venta/venta.component';
+import { TransaccionComponent } from './transaccion/transaccion.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,10 @@ import { ImagenRotaDirective } from './imagen-rota.directive';
     ClienteComponent,
     UsuarioFormComponent,
     ImagenRotaDirective,
+    CategoriaComponent,
+    ProductoComponent,
+    VentaComponent,
+    TransaccionComponent,
 
   ],
   imports: [
