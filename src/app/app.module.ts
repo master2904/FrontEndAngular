@@ -25,6 +25,7 @@ import { CategoriaComponent } from './categoria/categoria.component';
 import { ProductoComponent } from './producto/producto.component';
 import { VentaComponent } from './venta/venta.component';
 import { TransaccionComponent } from './transaccion/transaccion.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { TransaccionComponent } from './transaccion/transaccion.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     ToastrModule.forRoot(), // ToastrModule added
 
   ],

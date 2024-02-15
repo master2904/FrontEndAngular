@@ -21,4 +21,7 @@ export class CategoriaService {
   actualizar(formulario:Categoria,id:number):Observable<Categoria[]>{
     return this.http.put<Categoria[]>(this.base+'categoria/'+id,formulario)
   }
+  productos(id:number):Observable<any[]>{
+    return this.http.get<any[]>(this.base+'categoria/productos/'+id)
+  }
 }
