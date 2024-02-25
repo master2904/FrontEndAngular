@@ -1,7 +1,7 @@
 <hr>
 <h3 class="text-center"><strong>VENTA</strong></h3>
 <hr>
-<button class="btn btn-outline-success" mat-button><mat-icon>add</mat-icon>Realizar Venta</button>
+
 <div class="row">
   <div class="col-3">
     <mat-form-field>
@@ -11,8 +11,8 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <div class="col-9" >
-    <table class="table table-striped table-dark" *ngIf="productos.length>0">
+  <div class="col-6" >
+    <!-- <table class="table table-striped table-dark" *ngIf="productos.length>0">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -29,6 +29,45 @@
           <td>{{item.stock}}</td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
+    <form id="test">
+      <p>
+        <mat-form-field style="width: 50%;">
+          <mat-label>Categorias</mat-label>
+          <mat-select name="categoria">
+            <mat-option [value]="item.id" *ngFor="let item of categorias" (click)="listarProductos(item.id)">{{item.tipo}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field style="width: 50%;">
+          <mat-label>Productos</mat-label>
+          <mat-select name="producto">
+            <mat-option value={{item.id}} *ngFor="let item of productos" (click)="cargarDatos(item)">{{item.descripcion}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Cantidad</mat-label>
+          <input matInput type="number">
+          <mat-hint>Disponible: {{producto.stock}}</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Precio</mat-label>
+          <input matInput type="number">
+          <mat-hint>Precio: {{producto.precio_venta}}</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Cliente</mat-label>
+          <mat-select name="cliente">
+            <mat-option value={{item.id}} *ngFor="let item of clientes" (click)="cargarCliente(item)">{{item.apellido}} {{item.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+    </form>
+    <button class="btn btn-outline-success" mat-button (click)="enviar()"><mat-icon>attach_money</mat-icon>Realizar Venta</button>
   </div>
 </div>

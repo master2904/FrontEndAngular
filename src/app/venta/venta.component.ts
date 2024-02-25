@@ -20,6 +20,17 @@ export class VentaComponent implements OnInit{
   categorias:Categoria[]=[]
   clientes:Cliente[]=[]
   productos:Producto[]=[]
+  formulario:Venta={cliente_id:0,fecha:new Date(),forma_pago:'',id:0,pago:0,user_id:0}
+  producto:Producto={
+    id:0,
+    descripcion:'',
+    imagen:'',
+    cantidad_minima:0,
+    stock:0,
+    precio_compra:0,
+    precio_venta:0,
+    categoria_id:0
+  }
   constructor(
     private categoriaServicio:CategoriaService,
     private clientesServicio:ClienteService,
@@ -39,6 +50,27 @@ export class VentaComponent implements OnInit{
   listarProductos(id:number):void{
     this.categoriaServicio.productos(id).subscribe(data=>{
       this.productos=data
+      this.producto={
+        id:0,
+        descripcion:'',
+        imagen:'',
+        cantidad_minima:0,
+        stock:0,
+        precio_compra:0,
+        precio_venta:0,
+        categoria_id:0
+      }
     })
+  }
+  cargarDatos(item:Producto):void{
+    console.log(item.id)
+    this.producto=item
+  }
+  cargarCliente(item:Cliente):void{
+
+  }
+  enviar():void{
+    let x=document.getElementById('test')
+    console.log(x)
   }
 }
