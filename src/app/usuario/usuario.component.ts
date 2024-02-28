@@ -6,7 +6,8 @@ import {MatButtonModule} from '@angular/material/button';
 import Swal from 'sweetalert2';
 import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
 import { ToastrService } from 'ngx-toastr';
-
+import jsPDF from 'jspdf'
+import autoTable from 'jspdf-autotable'
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
@@ -138,5 +139,23 @@ export class UsuarioComponent implements OnInit{
 
       })
     });
+  }
+  imprimir():void{
+    const doc = new jsPDF()
+    let body:any[]=[]
+    let i=1
+  this.usuarios.forEach(user=>{
+    let fila=[]
+    fila.push(i++)
+    fila.push(user.nombre+" "+user.apellido)
+    fila.push(user.username)
+    fila.push(user.email)
+    body.push(fila)
+  })
+    autoTable(doc, {
+      head: [['Nombre', 'Cuenta', 'Correo']],
+      body: body,
+    })
+    doc.save('table.pdf')
   }
 }
