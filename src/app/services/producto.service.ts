@@ -26,4 +26,8 @@ export class ProductoService {
     fd.append('image',file,nombre)
     return this.http.post(this.base+'producto/imagen',fd)
   }
+  meses(gestion:number):Observable<any>{
+    return this.http.get(this.base+'producto/meses/'+gestion)
+  }
+
 }
