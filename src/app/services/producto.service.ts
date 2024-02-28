@@ -26,5 +26,4 @@ export class ProductoService {
     fd.append('image',file,nombre)
     return this.http.post(this.base+'producto/imagen',fd)
   }
-
 }

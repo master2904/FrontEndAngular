@@ -26,6 +26,8 @@ import { ProductoComponent } from './producto/producto.component';
 import { VentaComponent } from './venta/venta.component';
 import { TransaccionComponent } from './transaccion/transaccion.component';
 import {MatSelectModule} from '@angular/material/select';
+import { NgxChartsModule }from '@swimlane/ngx-charts';
+import { GraficoComponent } from './grafico/grafico.component';  // added
 
 @NgModule({
   declarations: [
@@ -41,7 +43,7 @@ import {MatSelectModule} from '@angular/material/select';
     ProductoComponent,
     VentaComponent,
     TransaccionComponent,
-
+    GraficoComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +57,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    NgxChartsModule,
     ToastrModule.forRoot(), // ToastrModule added
 
   ],
